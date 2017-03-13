@@ -1,6 +1,5 @@
 import subprocess
 import sys
-import socket
 
 
 class shell_command(object):
@@ -67,21 +66,3 @@ class shell_command(object):
             arguments.append(str(value))
 
         return arguments
-
-
-@shell_command(verbose=True)
-def ssh(*args, **kwargs):
-    connection_string = args[0]
-    user, host = connection_string.split('@')
-
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    try:
-        s.connect((host, 22))
-    except socket.error:
-        print('Port 22 on host "%s" is not accessible.' % host)
-        return 1
-    finally:
-        s.close()
-    return
-
-ssh('root@machine')
