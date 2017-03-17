@@ -1,4 +1,4 @@
-##Documentation
+## Documentation
     def shell_command(self, as_root=False, command=None, simulate=False, verbose=False)
     
 - as_root - if True command will be prefixed with "sudo"
@@ -6,8 +6,8 @@
 - simulate - prevents execution, command string will be returned
 - verbose - if True command output will be displayed + additional output
 
-##Examples
-###Simple Execution
+## Examples
+### Simple Execution
     >>> @shell_command(verbose=True)
     ... def whoami():
     ...      return
@@ -37,7 +37,7 @@
     >>> wget('https://github.com', O='index.html', q=None, progress='bar')
     Executing shell command: "wget -q -O index.html --progress=bar https://github.com"
 
-###Execute as super user
+### Execute as super user
     >>> @shell_command(verbose=True, as_root=True)
     ... def whoami():
     ...      return
@@ -46,7 +46,7 @@
     Executing shell command: "sudo whoami"
     root
     
-###Validate parameters
+### Validate parameters
     >>> @shell_command(verbose=True)
     ... def ssh(*args, **kwargs): 
     ... connection_string = args[0]
@@ -66,5 +66,5 @@
     Port 22 on host "machine" is not accessible.
     1
     
-##Known Issues
+## Known Issues
 - doesn't support parameters containing characters not allowed in python keywords (e.g. -)
